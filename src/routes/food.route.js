@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const foodController = require('../controllers/food.controller');
-const authFoodPartnerMiddleware = require('../middlewares/auth.middleware');
+const authMiddleware = require('../middlewares/auth.middleware');
 const multer = require('multer');
 
 
@@ -11,9 +11,13 @@ const uploads = multer({
 
 // Food Item Routes
 router.post('/',
-     authFoodPartnerMiddleware,
+     authMiddleware.authFoodPartnerMiddleware,
      uploads.single("video"),
      foodController.createFoodItem);
+
+
+// Get Food Items
+router.get('/', authMiddleware.authUserMiddleware , foodController.getFoodItems);
 
 
 module.exports = router;
