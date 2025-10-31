@@ -19,6 +19,7 @@ async function registerUser(req, res) {
         fullname,
         email,
         password: hashedPassword,
+       
 
     });
 
@@ -32,6 +33,9 @@ async function registerUser(req, res) {
         id: user._id,
         fullname: user.fullname,
         email: user.email,
+        phoneNumber: user.phoneNumber,
+        location: user.location,
+        contactName: user.contactName,
         token
     } });
     
@@ -71,7 +75,9 @@ async function logoutUser(req, res) {
 
 async function registerFoodPartner(req, res) {
     // Implementation for food partner registration
-    const { name, email, password } = req.body;
+    const { name, email, password,  phoneNumber,
+        location,
+        contactName, } = req.body;
     const existingPartner = await foodPartnerModel.findOne({ email });
     if (existingPartner) {
         return res.status(400).json({ message: 'Food Partner already exists' });
@@ -82,6 +88,9 @@ async function registerFoodPartner(req, res) {
         name,
         email,
         password: hashedPassword,
+        phoneNumber,
+        location,
+        contactName,
 
     });
 

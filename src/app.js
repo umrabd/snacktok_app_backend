@@ -1,10 +1,15 @@
 const express = require('express');
-const app = express();
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/auth.route');
 const foodRoutes = require('./routes/food.route');
+const cors = require('cors');
 
 
+const app = express();
+app.use(cors({
+    origin: 'http://localhost:5173', // Adjust according to your frontend's address
+    credentials: true,
+}));
 app.use(cookieParser());
 
 // Middleware to parse JSON bodies
