@@ -16,7 +16,7 @@ foodPartner: req.foodPartner._id,
     });
     res.status(201).json({
         message: 'Food item created successfully',
-        foodItem,
+        foodItem, 
     });
 }
 
