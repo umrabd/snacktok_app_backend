@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const foodController = require('../controllers/food.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
+
 const multer = require('multer');
 
 
@@ -18,6 +19,7 @@ router.post('/',
 
 // Get Food Items
 router.get('/', authMiddleware.authUserMiddleware , foodController.getFoodItems);
+
 
 
 module.exports = router;
