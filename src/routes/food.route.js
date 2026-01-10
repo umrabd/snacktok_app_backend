@@ -20,6 +20,9 @@ router.post('/',
 // Get Food Items
 router.get('/', authMiddleware.authUserMiddleware , foodController.getFoodItems);
 
+// Like Food Item
+router.post('/like', authMiddleware.authUserMiddleware , foodController.likeFood);
+
 
 
 module.exports = router;

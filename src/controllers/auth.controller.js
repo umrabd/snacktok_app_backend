@@ -138,6 +138,7 @@ async function logoutFoodPartner(req, res) {
     // Implementation for food partner logout
     res.clearCookie('token');
     res.status(200).json({ message: 'Logout successful' });
+
 }
 
 
